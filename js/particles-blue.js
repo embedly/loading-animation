@@ -1,8 +1,8 @@
 //make point source emitters, diffuse
 
 var sketch= function( p ) {
-  var w = 300;
-  var h = 300;
+  var w = 1000;
+  var h = 400;
   var density = 5;
   var shimmering= [];
   var logo = p.loadImage("img/embedly.png");
@@ -20,7 +20,7 @@ var sketch= function( p ) {
   };
 
   p.draw = function() {
-    p.background(1);
+    p.background(0.95);
 
     for(var i=0;i<shimmering.length; i++){
       var b = shimmering[i];
@@ -42,7 +42,7 @@ var sketch= function( p ) {
     }
 
     //draw shimmers
-    var period = 1000;
+    var period = 3000;
     var end = new Date().getTime();
     var elapsed = end-start;
     elapsed %= period;
@@ -71,7 +71,7 @@ var sketch= function( p ) {
   var createShimmer = function(x,y,dens){
      for(var i = 0; i< dens ; i++){
       var b = new Shimmer(x, y);
-      shimmering.push(b);
+      shimmering.unshift(b);
       }
   }
 
